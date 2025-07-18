@@ -8,12 +8,72 @@
     - inteiro ou decimal.
     */
 
-    //ENTRADA
+    // ENTRADA
+    const num1 = Number(prompt("Digite o primeiro número:"));
+    const num2 = Number(prompt("Digite o segundo número:"));
+    const operacao = prompt("Qual operação deseja realizar? (+, -, *, /)");
 
+    // PROCESSAMENTO
+    let resultado;
 
-    //PROCESSAMENTO
+    switch (operacao) {
+        case "+":
+            resultado = num1 + num2;
+            break;
+        case "-":
+            resultado = num1 - num2;
+            break;
+        case "*":
+            resultado = num1 * num2;
+            break;
+        case "/":
+            if (num2 === 0) {
+                alert("Erro: divisão por zero.");
+                break;
+            }
+            resultado = num1 / num2;
+            break;
+        default:
+            alert("Operação inválida. Use +, -, * ou /.");
+            break;
+    }
 
-    
-    //SAÍDA
+    // SAÍDA
+    if (resultado !== undefined) {
+        // Par ou ímpar
+        let parOuImpar;
+        switch (resultado % 2 === 0) {
+            case true:
+                parOuImpar = "par";
+                break;
+            case false:
+                parOuImpar = "ímpar";
+                break;
+        }
 
+        // Positivo ou negativo
+        let sinal;
+        switch (resultado >= 0) {
+            case true:
+                sinal = "positivo";
+                break;
+            case false:
+                sinal = "negativo";
+                break;
+        }
+
+        // Inteiro ou decimal
+        let tipo;
+        switch (Number.isInteger(resultado)) {
+            case true:
+                tipo = "inteiro";
+                break;
+            case false:
+                tipo = "decimal";
+                break;
+        }
+
+        alert(`Resultado: ${resultado}
+O número é ${parOuImpar}, ${sinal} e ${tipo}.`);
+    }
 </script>
