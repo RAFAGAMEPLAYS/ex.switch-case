@@ -1,0 +1,62 @@
+<meta charset="UTF-8">
+<script>
+    /*
+    PROBLEMA: INVESTIGAÇÃO CRIMINAL
+    Faça um script que faça 5 perguntas para uma pessoa sobre um crime. As perguntas são:
+    - "Telefonou para a vítima?"
+    - "Esteve no local do crime?"
+    - "Mora perto da vítima?"
+    - "Devia para a vítima?"
+    - "Já trabalhou com a vítima?"
+    O script deve no final emitir uma classificação sobre a participação da pessoa no crime. Se a pessoa responder positivamente a 2 questões ela deve ser classificada como "Suspeita", entre 3 e 4 como "Cúmplice" e 5 como "Assassino". Caso contrário, ele será classificado como "Inocente".
+    */
+
+    //ENTRADA
+    const per1 = prompt("Telefonou para a vítima?");
+    const per2 = prompt("Esteve no local do crime?");
+    const per3 = prompt("Mora perto da vítima?");
+    const per4 = prompt("Devia para a vítima?");
+    const per5 = prompt("Já trabalhou com a vítima?");
+    
+    //PROCESSAMENTO
+    let respostasPositivas = 0;
+
+    // Verificando se a resposta foi "sim" para cada pergunta
+    const respostas = [per1, per2, per3, per4, per5];
+
+    // Usando o switch para contar as respostas "sim"
+    respostas.forEach(resposta => {
+        switch (resposta.toLowerCase()) {
+            case "sim":
+                respostasPositivas++;
+                break;
+            case "não":
+            case "nao":
+                break;
+            default:
+                alert("Por favor, responda apenas com 'sim' ou 'não'.");
+                break;
+        }
+    });
+
+    // Classificação com base nas respostas
+    let classificacao;
+    switch (respostasPositivas) {
+        case 2:
+            classificacao = "Suspeita";
+            break;
+        case 3:
+        case 4:
+            classificacao = "Cúmplice";
+            break;
+        case 5:
+            classificacao = "Assassino";
+            break;
+        default:
+            classificacao = "Inocente";
+            break;
+    }
+
+    //SAÍDA
+    alert(`Classificação: ${classificacao}`);
+</script>
